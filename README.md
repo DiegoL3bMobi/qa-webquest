@@ -8,7 +8,7 @@ Uma aplicação web para questionários que podem ser definidos por diversas cat
 
 ... a ser colocado depois
 
-# Como funciona
+# Como instalar
 
 ... a ser colocado depois
 

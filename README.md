@@ -6,7 +6,13 @@ Uma aplicação web para questionários que podem ser definidos por diversas cat
 
 # Telas
 
-... a ser colocado depois
+![Captura 1](/capturas/tela-inicio.png)
+
+![Captura 2](/capturas/tela-cadastros.png)
+
+![Captura 3](/capturas/tela-cadastro-pesquisador.png)
+
+![Captura 4](/capturas/tela-cadastro-participante.png)
 
 # Como instalar
 

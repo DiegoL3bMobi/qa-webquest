@@ -14,4 +14,4 @@ Uma aplicação web para questionários que podem ser definidos por diversas cat
 
 # Licença de uso
 
-... a ser colocado depois
+Esta aplicação web é licenciada pelo padrão Apache Licence V2.0

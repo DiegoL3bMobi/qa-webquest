@@ -15,15 +15,15 @@
           
     }
     
-    if ( !empty($_POST['btn-reg-parceiro']) ) {
+    if ( !empty($_POST) ) {
     
         $empresa = security_data_sponsors($_POST['empNome']);
         $fone    = security_data_sponsors($_POST['empFone']);
         $email   = security_data_sponsors($_POST['empEmail']);
         
         // Upload image de parceiro
-        $file = rand(1000,100000)."-".$_FILES['empImgUpload']['name'];
-        $file_loc = $_FILES['empImgUpload']['tmp_name'];
+        $file = rand(1000,100000)."-".$_FILES['file']['name'];
+        $file_loc = $_FILES['file']['tmp_name'];
         $folder="../images/parceiros/upload/";
         
         // make file name in lower case
@@ -31,21 +31,22 @@
         // make file name in lower case
          
         $final_file=str_replace(' ','-',$new_file_name);
+ 
+        $pdo = Database::connect();                
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        if ( isset($empresa) and isset($fone) and isset($email) )
+        if(move_uploaded_file($file_loc,$folder.$final_file))
         {
-        
-          if(move_uploaded_file($file_loc,$folder.$final_file))
-          {
             $sql = "INSERT INTO parceiros(nm_empresa,email,telefone,logo) values(?, ?, ?, ?)";
-          }
-          
-          $q = $pdo->prepare($sql);
-          $q->execute(array($empresa,$fone,$email,$final_file));
-          
-          Database::disconnect();
-        
+            //$sql = "INSERT INTO parceiros(telefone,email,logo,nm_empresa) values(?, ?, ?, ?)";
         }
-              
+          
+        $q = $pdo->prepare($sql);
+        
+        $q->execute(array($empresa,$email,$fone,$final_file));
+        //$q->execute(array($fone,$email,$final_file,$empresa));
+          
+        Database::disconnect();
+                             
     }
 ?>
